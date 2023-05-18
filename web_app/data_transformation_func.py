@@ -3,7 +3,7 @@ from typing import Any, Dict, List
 
 from task_6 import Driver
 
-from db.db_classes import Report
+from web_app.db.models import Report
 
 
 def _get_order(response_order: str) -> bool:

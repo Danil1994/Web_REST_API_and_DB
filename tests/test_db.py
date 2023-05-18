@@ -3,7 +3,7 @@ import unittest.mock
 from func_for_test import create_random_drivers_list
 from peewee import SqliteDatabase
 
-from db.db_classes import AscReport
+from web_app.db.models import AscReport
 
 random_drivers_list = create_random_drivers_list(10)
 

@@ -1,7 +1,7 @@
 from os import environ as env
 from dotenv import load_dotenv
 
-# Загрузка переменных среды из файла .env без этого не работает
+#  Loading environment variables from .env file doesn't work without this
 load_dotenv()
 
 
