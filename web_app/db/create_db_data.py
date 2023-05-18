@@ -15,7 +15,8 @@ def create_report() -> List[Driver]:
     return create_list_object(Settings.PATH_FILE)
 
 
-def create_table(table:  database) -> None:
+def create_table(tables: list[database]) -> None:
+    for table in tables:
         with database:
             try:
                 database.create_tables([table])
