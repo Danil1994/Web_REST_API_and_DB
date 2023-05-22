@@ -1,13 +1,47 @@
 from typing import Any
-
+from datetime import datetime
 from faker import Faker
 from task_6 import time_format
 
 from web_app.data_transformation_func import Driver
 
-not_random_drivers = [Driver(abbr='SVF', name='Sebastian Vallet', car='Ferrari'),
-                      Driver(abbr="VBM", name="Valtteri Bottas", car='BMW'),
-                      Driver(abbr="SVM", name="Stoffel Vandoorne", car='Volvo')]
+not_random_drivers_list = [Driver(abbr='SVF',
+                                  name='Sebastian Vettel',
+                                  car='FERRARI',
+                                  start_time=datetime.strptime('2018-05-24_12:02:58.917', time_format),
+                                  end_time=datetime.strptime('2018-05-24_12:04:03.332', time_format),
+                                  lap_time='0:01:04.415'),
+                           Driver(abbr='LHM',
+                                  name='Lewis Hamilton',
+                                  car='MERCEDES',
+                                  start_time=datetime.strptime('2018-05-24_12:03:00.837', time_format),
+                                  end_time=datetime.strptime('2018-05-24_12:04:05.114', time_format),
+                                  lap_time='0:01:04.484'),
+                           Driver(abbr='KRF',
+                                  name='Kimi Raikkonen',
+                                  car='RED BULL',
+                                  start_time=datetime.strptime('2018-05-24_12:03:01.581', time_format),
+                                  end_time=datetime.strptime('2018-05-24_12:04:07.215', time_format),
+                                  lap_time='0:01:05.776')]
+
+asc_drivers_dict = [{'abbr': 'SVF',
+                     'car': 'FERRARI',
+                     'driver_name': 'Sebastian Vettel',
+                     'end_time': '2018-05-24 12:04:03.332000',
+                     'lap_time': '0:01:04.415',
+                     'start_time': '2018-05-24 12:02:58.917000'},
+                    {'abbr': 'LHM',
+                     'car': 'MERCEDES',
+                     'driver_name': 'Lewis Hamilton',
+                     'end_time': '2018-05-24 12:04:05.114000',
+                     'lap_time': '0:01:04.484',
+                     'start_time': '2018-05-24 12:03:00.837000'},
+                    {'abbr': 'KRF',
+                     'car': 'RED BULL',
+                     'driver_name': 'Kimi Raikkonen',
+                     'end_time': '2018-05-24 12:04:07.215000',
+                     'lap_time': '0:01:05.776',
+                     'start_time': '2018-05-24 12:03:01.581000'}]
 
 
 def random_driver() -> Driver:

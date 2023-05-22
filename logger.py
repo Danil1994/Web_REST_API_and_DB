@@ -14,6 +14,4 @@ def initialize_logger():
     console_handler.setFormatter(formatter)
 
     logger.addHandler(console_handler)
-
-
-initialize_logger()
+    return logger

@@ -11,5 +11,5 @@ def create_table_and_data() -> None:
     create_table(ALL_MODELS)
 
     report = create_report()
-    asc_sort_report = sorting_order_by(report, False)
+    asc_sort_report = sorting_order_by(report, desc=False)
     create_report_in_table(asc_sort_report, TableReport)
