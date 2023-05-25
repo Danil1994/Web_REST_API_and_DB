@@ -1,4 +1,5 @@
 from os import environ as env
+
 from dotenv import load_dotenv
 
 #  Loading environment variables from .env file doesn't work without this

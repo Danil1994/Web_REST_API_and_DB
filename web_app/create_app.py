@@ -3,8 +3,8 @@ from flask import Flask
 from flask_restful import Api
 
 from config import Config
-from web_app.db.db_init import database
 from web_app.api import Report, ReportDriver, ShortReport
+from web_app.db.db_init import database
 
 
 def create_app(config) -> Flask:

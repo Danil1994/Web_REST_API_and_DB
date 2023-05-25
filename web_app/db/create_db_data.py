@@ -4,9 +4,8 @@ from peewee import IntegrityError
 from task_6 import Driver, create_list_object
 
 from config import Settings
-from web_app.db.db_init import database
-
 from logger import initialize_logger
+from web_app.db.db_init import database
 
 logger = initialize_logger()
 
@@ -33,5 +32,6 @@ def create_report_in_table(report: List[Driver], table: database) -> None:
                          lap_time=driver.lap_time,
                          start_time=driver.start_time,
                          end_time=driver.end_time)
+            logger.debug(f"Record {driver.abbr} created successfully")
         except IntegrityError:
             logger.error(f"Driver with abbreviation {driver.abbr} already exists in table {table.__name__}")
