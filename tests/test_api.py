@@ -3,11 +3,12 @@ from unittest.mock import patch
 
 from flask import json
 
+from tests.func_for_test import DataBaseTestCase
 from tests.func_for_test import create_random_drivers_dict
 from web_app.create_app import app
 
 
-class TestReport(unittest.TestCase):
+class TestReport(DataBaseTestCase):
     @classmethod
     def setUpClass(cls):
         cls.client = app.test_client()
@@ -22,6 +23,7 @@ class TestReport(unittest.TestCase):
         response = self.client.get('/api/v1/report')
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.content_type, 'application/json')
+        self.assertTrue(response.json)
         mock_made_report.assert_called_once()
 
     @patch('web_app.api.made_report')
