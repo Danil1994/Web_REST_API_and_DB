@@ -1,8 +1,8 @@
 from unittest import mock
 
 from tests.func_for_test import DataBaseTestCase
-
-from web_app.db.create_db_data import create_report_in_table, create_table, create_report
+from web_app.db.create_db_data import (create_report, create_report_in_table,
+                                       create_table)
 from web_app.db.models import Report
 
 

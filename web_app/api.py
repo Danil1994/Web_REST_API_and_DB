@@ -1,9 +1,9 @@
 import json
+import xml.etree.ElementTree as ET
 from datetime import datetime
 from typing import Any, Dict, List
 
 from dict2xml import dict2xml
-import xml.etree.ElementTree as ET
 from flasgger import swag_from
 from flask import Response, abort, request
 from flask_restful import Resource

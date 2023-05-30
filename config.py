@@ -8,7 +8,7 @@ load_dotenv()
 
 class Settings:
     PATH_FILE = env.get('LOCAL_PATH_FILE')
-    DATA_BASE = env.get('LOCAL_DATA_BASE')
+    DATA_BASE = env.get('LOCAL_DATA_BASE', ":memory:")
 
 
 class Config:

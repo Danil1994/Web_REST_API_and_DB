@@ -2,8 +2,8 @@ import unittest
 from datetime import datetime
 from typing import Any
 
-from flask import json
 from faker import Faker
+from flask import json
 from peewee import SqliteDatabase
 from task_6 import time_format
 

@@ -1,7 +1,7 @@
 from unittest.mock import patch
 
-from flask import json
 import xmltodict
+from flask import json
 
 from tests.func_for_test import DataBaseTestCase
 from web_app.create_app import app

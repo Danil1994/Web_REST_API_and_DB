@@ -1,9 +1,9 @@
 from datetime import datetime
 
-from tests.func_for_test import DataBaseTestCase
 from task_6 import Driver, time_format
 
-from tests.func_for_test import asc_drivers_dict, not_random_drivers_list
+from tests.func_for_test import (DataBaseTestCase, asc_drivers_dict,
+                                 not_random_drivers_list)
 from web_app.data_transformation_func import (find_info_about_driver,
                                               made_driver_info_dict,
                                               made_report, made_short_report)
