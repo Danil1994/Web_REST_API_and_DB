@@ -2,6 +2,7 @@ import unittest
 from datetime import datetime
 from typing import Any
 
+from flask import json
 from faker import Faker
 from peewee import SqliteDatabase
 from task_6 import time_format
@@ -55,6 +56,7 @@ class DataBaseTestCase(unittest.TestCase):
         self.test_db.connect()
         self.test_db.create_tables(ALL_MODELS)
         self.random_driver_list = create_random_drivers_list(3)
+        self.random_drivers_dict = create_random_drivers_dict(3)
         self.driver = self.random_driver_list[0]
 
         Report.create(abbr='SVF',
@@ -105,9 +107,18 @@ def create_random_drivers_dict(number) -> list[dict[str, Any]]:
     drivers = []
     for _ in range(number):
         driver = random_driver()
-        data_driver_dict = {'abbr': driver.abbr, 'car': driver.car, 'end_time': driver.end_time,
-                            'lap_time': driver.lap_time,
-                            'name': driver.name, 'start_time': driver.start_time}
+        data_driver_dict = {"abbr": driver.abbr,
+                            "car": driver.car,
+                            "end_time": driver.end_time,
+                            "lap_time": driver.lap_time,
+                            "name": driver.name,
+                            "start_time": driver.start_time}
         drivers.append(data_driver_dict)
 
-    return drivers
+    drivers_json = json.dumps(drivers)
+    drivers_list = json.loads(drivers_json)
+    return drivers_list
+
+
+# x = create_random_drivers_dict(1)
+# print(x)
