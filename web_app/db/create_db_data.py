@@ -1,17 +1,12 @@
 from typing import List
 
 from peewee import IntegrityError
-from task_6 import Driver, create_list_object
+from task_6 import Driver
 
-from config import Settings
 from logger import initialize_logger
 from web_app.db.db_init import database
 
 logger = initialize_logger()
-
-
-def create_report() -> List[Driver]:
-    return create_list_object(Settings.PATH_FILE)
 
 
 def create_table(tables: database) -> None:

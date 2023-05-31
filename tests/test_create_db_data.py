@@ -1,16 +1,11 @@
 from unittest import mock
 
 from tests.func_for_test import DataBaseTestCase
-from web_app.db.create_db_data import (create_report, create_report_in_table,
-                                       create_table)
+from web_app.db.create_db_data import create_report_in_table, create_table
 from web_app.db.models import Report
 
 
 class DataBaseCreateReport(DataBaseTestCase):
-    @mock.patch('web_app.db.create_db_data.create_list_object')
-    def test_create_report(self, mock_list_object):
-        create_report()
-        mock_list_object.assert_called_once()
 
     @mock.patch('web_app.db.create_db_data.database')
     @mock.patch('web_app.db.create_db_data.logger')

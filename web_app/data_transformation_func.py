@@ -14,12 +14,17 @@ def _normalize_string(data: str) -> str:
     return data.upper().strip()
 
 
-def made_report(order: bool) -> List[Dict[str, Any]]:
-    drivers_list = []
+def _report_sorted_by_order(order):
     if not order:
         sorted_report = Report.select().order_by(Report.lap_time.asc())
     else:
         sorted_report = Report.select().order_by(Report.lap_time.desc())
+    return sorted_report
+
+
+def made_report(order: bool) -> List[Dict[str, Any]]:
+    drivers_list = []
+    sorted_report = _report_sorted_by_order(order)
     for driver in sorted_report:
         driver_info = {"abbr": driver.abbr, "driver_name": driver.name, "lap_time": driver.lap_time,
                        "car": driver.car, "start_time": driver.start_time, "end_time": driver.end_time}
@@ -30,10 +35,7 @@ def made_report(order: bool) -> List[Dict[str, Any]]:
 
 def made_short_report(order: bool) -> list[dict[str, Any]]:
     short_drivers_list = []
-    if not order:
-        sorted_report = Report.select().order_by(Report.lap_time.asc())
-    else:
-        sorted_report = Report.select().order_by(Report.lap_time.desc())
+    sorted_report = _report_sorted_by_order(order)
     for driver in sorted_report:
         driver_info = {"abbr": driver.abbr, "driver_name": driver.name, "lap_time": driver.lap_time}
 

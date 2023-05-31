@@ -118,7 +118,3 @@ def create_random_drivers_dict(number) -> list[dict[str, Any]]:
     drivers_json = json.dumps(drivers)
     drivers_list = json.loads(drivers_json)
     return drivers_list
-
-
-# x = create_random_drivers_dict(1)
-# print(x)

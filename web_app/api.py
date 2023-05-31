@@ -42,7 +42,6 @@ def output_formatted_data_from_list(format_value: MyEnum, info_list: List[Any] |
 
 
 class Report(Resource):
-
     @swag_from('swagger/report.yml')
     def get(self) -> List[Dict[str, Any]] | Response:
         order = _get_order(request.args.get('order', default='asc'))
@@ -63,7 +62,6 @@ class ShortReport(Resource):
 
 
 class ReportDriver(Resource):
-
     @swag_from('swagger/report_driver.yml')
     def get(self, driver_abbr: str) -> dict[str, datetime | None | str] | Response:
         response_format = MyEnum(request.args.get('format', default='json'))
