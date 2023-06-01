@@ -1,3 +1,5 @@
+import collections
+from dataclasses import asdict
 from datetime import datetime
 from typing import Any, Dict, List
 
@@ -14,11 +16,12 @@ def _normalize_string(data: str) -> str:
     return data.upper().strip()
 
 
-def _report_sorted_by_order(order):
+def _report_sorted_by_order(order: bool) -> Any:
     if not order:
         sorted_report = Report.select().order_by(Report.lap_time.asc())
     else:
         sorted_report = Report.select().order_by(Report.lap_time.desc())
+    print(sorted_report)
     return sorted_report
 
 
@@ -43,12 +46,16 @@ def made_short_report(order: bool) -> list[dict[str, Any]]:
     return short_drivers_list
 
 
-def find_info_about_driver(driver_abbr: str) -> Driver | None:
-    driver_info = None
-    driver_abbr = _normalize_string(driver_abbr)
+def _report_select(driver_abbr: str) -> Any | None:
     for driver in Report.select():
         if driver.abbr == driver_abbr:
-            driver_info = driver
+            return driver
+    return None
+
+
+def find_info_about_driver(driver_abbr: str) -> Driver | None:
+    driver_abbr = _normalize_string(driver_abbr)
+    driver_info = _report_select(driver_abbr)
 
     return driver_info
 

@@ -18,15 +18,19 @@ def create_table(tables: database) -> None:
             logger.debug(f"Table {table.__name__} created successfully")
 
 
+def _create_record(driver: Driver, table: database) -> None:
+    table.create(abbr=driver.abbr,
+                 name=driver.name,
+                 car=driver.car,
+                 lap_time=driver.lap_time,
+                 start_time=driver.start_time,
+                 end_time=driver.end_time)
+    logger.debug(f"Record {driver.abbr} created successfully")
+
+
 def create_report_in_table(report: List[Driver], table: database) -> None:
     for driver in report:
         try:
-            table.create(abbr=driver.abbr,
-                         name=driver.name,
-                         car=driver.car,
-                         lap_time=driver.lap_time,
-                         start_time=driver.start_time,
-                         end_time=driver.end_time)
-            logger.debug(f"Record {driver.abbr} created successfully")
+            _create_record(driver, table)
         except IntegrityError:
             logger.error(f"Driver with abbreviation {driver.abbr} already exists in table {table.__name__}")
