@@ -2,7 +2,7 @@ from unittest import mock
 
 from tests.func_for_test import DataBaseTestCase
 from web_app.db.create_db_data import create_report_in_table, create_table
-from web_app.db.models import Report
+from web_app.db.models import self
 
 
 class DataBaseCreateReport(DataBaseTestCase):
@@ -10,7 +10,7 @@ class DataBaseCreateReport(DataBaseTestCase):
     @mock.patch('web_app.db.create_db_data.database')
     @mock.patch('web_app.db.create_db_data.logger')
     def test_create_table(self, mock_logger, mock_database):
-        tables = [Report]
+        tables = [self]
         mock_database.drop_tables.return_value = None
         mock_database.create_tables.return_value = None
 
@@ -23,9 +23,9 @@ class DataBaseCreateReport(DataBaseTestCase):
 
     @mock.patch('web_app.db.create_db_data.logger')
     def test_create_report_in_table(self, mock_logger):
-        create_report_in_table(self.random_driver_list, Report)
-        create_report_in_table([self.driver], Report)
-        report = Report.select().where(Report.abbr == self.driver.abbr)
+        create_report_in_table(self.random_driver_list, self)
+        create_report_in_table([self.driver], self)
+        report = self.select().where(self.abbr == self.driver.abbr)
         self.assertEqual(report, self.driver)
 
         mock_logger.debug.assert_called()
