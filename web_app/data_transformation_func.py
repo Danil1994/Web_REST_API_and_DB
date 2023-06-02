@@ -1,9 +1,10 @@
+from dataclasses import asdict
 from datetime import datetime
 from typing import Any, Dict, List
 
 from task_6 import Driver
 
-from web_app.db.models import ReportRepository
+from web_app.db.models import ReportRepository, ExtendedDriver
 
 report = ReportRepository()
 
@@ -18,18 +19,16 @@ def _normalize_string(data: str) -> str:
 
 def made_report(order: bool) -> List[Dict[str, Any]]:
     drivers_list = []
-    sorted_report = report.get_all_drivers(order)
+    sorted_report = ReportRepository.get_all_drivers(order)
     for driver in sorted_report:
-        driver_info = {"abbr": driver.abbr, "driver_name": driver.name, "lap_time": driver.lap_time,
-                       "car": driver.car, "start_time": driver.start_time, "end_time": driver.end_time}
-
-        drivers_list.append(driver_info)
+        obj = ExtendedDriver.all_info_from_peewee_obj(driver)
+        drivers_list.append(asdict(obj))
     return drivers_list
 
 
 def made_short_report(order: bool) -> list[dict[str, Any]]:
     short_drivers_list = []
-    sorted_report = report.get_all_drivers(order)
+    sorted_report = ReportRepository.get_all_drivers(order)
     for driver in sorted_report:
         driver_info = {"abbr": driver.abbr, "driver_name": driver.name, "lap_time": driver.lap_time}
 
