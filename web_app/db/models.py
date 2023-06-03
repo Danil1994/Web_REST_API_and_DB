@@ -1,5 +1,6 @@
 from datetime import datetime
 from dataclasses import dataclass
+from typing import Type
 
 from peewee import CharField, Model
 from task_6 import Driver
@@ -25,6 +26,9 @@ ALL_MODELS = [Report]
 
 
 class ReportRepository(BaseModel):
+    @property
+    def model(self) -> Type[Report]:
+        return Report
 
     @classmethod
     def get_all_drivers(cls, order: bool) -> list[Driver] | None:
@@ -36,30 +40,43 @@ class ReportRepository(BaseModel):
 
     @classmethod
     def get_one_driver(cls, driver_abbr: str) -> Driver | None:
-        driver = Report.select()
         for driver in Report.select():
             if driver.abbr == driver_abbr:
                 return driver
-        return driver
+        return None
 
 
 @dataclass
 class ExtendedDriver:
     abbr: str
-    name: str
+    driver_name: str
     car: str
     start_time: datetime
     end_time: datetime
     lap_time: str
 
     @classmethod
-    def all_info_from_peewee_obj(cls, driver: Driver):
+    def from_peewee_obj(cls, driver: Driver):
         return cls(
             abbr=driver.abbr,
-            name=driver.name,
+            driver_name=driver.name,
             car=driver.car,
             start_time=driver.start_time,
             end_time=driver.end_time,
             lap_time=driver.lap_time
         )
 
+
+@dataclass
+class ShortDriver:
+    abbr: str
+    driver_name: str
+    lap_time: str
+
+    @classmethod
+    def from_peewee_obj(cls, driver: Driver):
+        return cls(
+            abbr=driver.abbr,
+            driver_name=driver.name,
+            lap_time=driver.lap_time,
+        )

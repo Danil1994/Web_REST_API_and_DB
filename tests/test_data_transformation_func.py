@@ -57,7 +57,7 @@ class TestFunction(DataBaseTestCase):
         expected_output = {'abbr': 'SVF',
                            'car': 'FERRARI',
                            'driver_name': 'Sebastian Vettel',
-                           'end_time': datetime(2018, 5, 24, 12, 4, 3, 332000),
+                           'end_time': '2018-05-24 12:04:03.332000',
                            'lap_time': '0:01:04.415',
-                           'start_time': datetime(2018, 5, 24, 12, 2, 58, 917000)}
+                           'start_time': '2018-05-24 12:02:58.917000'}
         self.assertEqual(made_driver_info_dict(not_random_drivers_list[0]), expected_output)
