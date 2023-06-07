@@ -1,5 +1,5 @@
-from datetime import datetime
 from dataclasses import dataclass
+from datetime import datetime
 from typing import Type
 
 from peewee import CharField, Model
@@ -25,15 +25,16 @@ class Report(BaseModel):
 ALL_MODELS = [Report]
 
 
-class ReportRepository(BaseModel):
+class ReportRepository:
+
     @property
-    def model(self) -> Type[Report]:
-        return Report
+    def model(self) -> BaseModel:
+        return Report()
 
     @classmethod
     def get_all_drivers(cls, order: bool) -> list[Driver] | None:
         if not order:
-            sorted_report = Report.select().order_by(Report.lap_time.asc())
+            sorted_report = cls.model.select().order_by(Report.lap_time.asc())
         else:
             sorted_report = Report.select().order_by(Report.lap_time.desc())
         return sorted_report

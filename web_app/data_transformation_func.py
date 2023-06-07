@@ -4,7 +4,7 @@ from typing import Any, Dict, List
 
 from task_6 import Driver
 
-from web_app.db.models import ReportRepository, ExtendedDriver, ShortDriver
+from web_app.db.models import ExtendedDriver, ReportRepository, ShortDriver
 
 
 def _get_order(response_order: str) -> bool:
@@ -34,7 +34,6 @@ def made_short_report(order: bool) -> list[dict[str, Any]]:
 
 
 def find_info_about_driver(driver_abbr: str) -> Driver | None:
-
     driver_abbr = _normalize_string(driver_abbr)
     driver_info = ReportRepository.get_one_driver(driver_abbr)
 
