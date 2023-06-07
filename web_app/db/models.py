@@ -28,20 +28,18 @@ ALL_MODELS = [Report]
 class ReportRepository:
 
     @property
-    def model(self) -> BaseModel:
-        return Report()
+    def model(self) -> Type[Report]:
+        return Report
 
-    @classmethod
-    def get_all_drivers(cls, order: bool) -> list[Driver] | None:
+    def get_all_drivers(self, order: bool) -> list[Driver] | None:
         if not order:
-            sorted_report = cls.model.select().order_by(Report.lap_time.asc())
+            sorted_report = self.model.select().order_by(self.model.lap_time.asc())
         else:
-            sorted_report = Report.select().order_by(Report.lap_time.desc())
+            sorted_report = self.model.select().order_by(self.model.lap_time.desc())
         return sorted_report
 
-    @classmethod
-    def get_one_driver(cls, driver_abbr: str) -> Driver | None:
-        for driver in Report.select():
+    def get_one_driver(self, driver_abbr: str) -> Driver | None:
+        for driver in self.model.select():
             if driver.abbr == driver_abbr:
                 return driver
         return None

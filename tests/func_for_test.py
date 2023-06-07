@@ -60,23 +60,23 @@ class DataBaseTestCase(unittest.TestCase):
         self.driver = self.random_driver_list[0]
 
         Report.create(abbr='SVF',
-                    name='Sebastian Vettel',
-                    car='FERRARI',
-                    start_time=datetime.strptime('2018-05-24_12:02:58.917', time_format),
-                    end_time=datetime.strptime('2018-05-24_12:04:03.332', time_format),
-                    lap_time='0:01:04.415')
+                      name='Sebastian Vettel',
+                      car='FERRARI',
+                      start_time=datetime.strptime('2018-05-24_12:02:58.917', time_format),
+                      end_time=datetime.strptime('2018-05-24_12:04:03.332', time_format),
+                      lap_time='0:01:04.415')
         Report.create(abbr='LHM',
-                    name='Lewis Hamilton',
-                    car='MERCEDES',
-                    start_time=datetime.strptime('2018-05-24_12:03:00.837', time_format),
-                    end_time=datetime.strptime('2018-05-24_12:04:05.114', time_format),
-                    lap_time='0:01:04.484')
+                      name='Lewis Hamilton',
+                      car='MERCEDES',
+                      start_time=datetime.strptime('2018-05-24_12:03:00.837', time_format),
+                      end_time=datetime.strptime('2018-05-24_12:04:05.114', time_format),
+                      lap_time='0:01:04.484')
         Report.create(abbr='KRF',
-                    name='Kimi Raikkonen',
-                    car='RED BULL',
-                    start_time=datetime.strptime('2018-05-24_12:03:01.581', time_format),
-                    end_time=datetime.strptime('2018-05-24_12:04:07.215', time_format),
-                    lap_time='0:01:05.776')
+                      name='Kimi Raikkonen',
+                      car='RED BULL',
+                      start_time=datetime.strptime('2018-05-24_12:03:01.581', time_format),
+                      end_time=datetime.strptime('2018-05-24_12:04:07.215', time_format),
+                      lap_time='0:01:05.776')
 
     def tearDown(self):
         self.test_db.drop_tables(ALL_MODELS)

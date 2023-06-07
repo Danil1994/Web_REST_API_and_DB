@@ -30,4 +30,3 @@ class DataBaseCreateReport(DataBaseTestCase):
 
         mock_logger.debug.assert_called()
         mock_logger.error.assert_called()
-

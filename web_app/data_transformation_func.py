@@ -17,7 +17,7 @@ def _normalize_string(data: str) -> str:
 
 def made_report(order: bool) -> List[Dict[str, Any]]:
     drivers_list = []
-    sorted_report = ReportRepository.get_all_drivers(order)
+    sorted_report = ReportRepository().get_all_drivers(order)
     for driver in sorted_report:
         obj = ExtendedDriver.from_peewee_obj(driver)
         drivers_list.append(asdict(obj))
@@ -26,7 +26,7 @@ def made_report(order: bool) -> List[Dict[str, Any]]:
 
 def made_short_report(order: bool) -> list[dict[str, Any]]:
     short_drivers_list = []
-    sorted_report = ReportRepository.get_all_drivers(order)
+    sorted_report = ReportRepository().get_all_drivers(order)
     for driver in sorted_report:
         obj = ShortDriver.from_peewee_obj(driver)
         short_drivers_list.append(asdict(obj))
@@ -35,13 +35,13 @@ def made_short_report(order: bool) -> list[dict[str, Any]]:
 
 def find_info_about_driver(driver_abbr: str) -> Driver | None:
     driver_abbr = _normalize_string(driver_abbr)
-    driver_info = ReportRepository.get_one_driver(driver_abbr)
+    driver_info = ReportRepository().get_one_driver(driver_abbr)
 
     return driver_info
 
 
 def made_driver_info_dict(driver: Driver) -> dict[str, datetime | None | str]:
-    driver_info = ReportRepository.get_one_driver(driver.abbr)
+    driver_info = ReportRepository().get_one_driver(driver.abbr)
     obj = ExtendedDriver.from_peewee_obj(driver_info)
 
     return asdict(obj)
