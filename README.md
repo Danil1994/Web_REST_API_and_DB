@@ -15,9 +15,10 @@
 - */api/v1/report* - full report
 - */api/v1/report/drivers* - short report
 - */api/v1/report/drivers/{driver_abbr}* - report about onr driver
-================================
+
 - **You may choose preferred format json/xml**
 - **You may choose ascending order or descending order**
+
 ================================
 
 Simple web application.
