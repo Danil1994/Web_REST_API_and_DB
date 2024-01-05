@@ -1,25 +1,24 @@
-Install
-Put command in your CLI 'git clone https://github.com/Danil1994/Web_REST_API_and_DB.git'
-Install dependencies 'pipenv install --dev'
+# Install
 
-Activate this project's virtualenv, run 'pipenv shell'
-Create .env file like .env.example and write path to the data and DB.
+1. Clone repository <u>'git clone https://github.com/Danil1994/Web_REST_API_and_DB.git' </u>
+2. Install dependencies <u>'pipenv install --dev' </u>
+3. Activate this project's virtualenv, run <u>'pipenv shell' </u>
+4. Create <u>.env</u> file like <u>.env.example</u> and write path to the data and DB.
 (Folder 'example folder' contain data to example. Also, you may put the way to this folder)
 
-Run your application.
-Create test data, use 'entrypoint.py' file.
+5. Run your application run <u>'python main.py'</u>
+6. Create test data, run <u>'python entrypoint.py' </u>
 
-work link: http://127.0.0.1:5000/apidocs
+7. Test ability of this project by link <u>http://127.0.0.1:5000/apidocs </u>
 
-Test ability of this project by link http://127.0.0.1:5000/apidocs
-
-/api/v1/report - full report
-/api/v1/report/drivers - short report
-/api/v1/report/drivers/{driver_abbr} - report about onr driver
-
-You may choose preferred format json/xml
-You may choose ascending order or descending order
-
+================================
+- */api/v1/report* - full report
+- */api/v1/report/drivers* - short report
+- */api/v1/report/drivers/{driver_abbr}* - report about onr driver
+================================
+- **You may choose preferred format json/xml**
+- **You may choose ascending order or descending order**
+================================
 
 Simple web application.
 
